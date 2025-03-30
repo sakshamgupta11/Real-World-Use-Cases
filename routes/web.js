@@ -7,6 +7,7 @@ import userViewBlock from '../controller/userView.js';
 import UserViewByID from '../controller/userViewByID.js';
 import checkAuthForAdmin from '../middleware/AuthAdmin.js';
 import deleteBlocks from '../controller/deleteblock.js';
+import updateBlocks from '../controller/updateBlocks.js';
 
 
 const route = express();
@@ -27,5 +28,7 @@ route.get('/view-block/:id',UserViewByID)
 // for admin
 route.use("/delete/block/:id",checkAuthForAdmin)
 route.delete("/delete/block/:id",deleteBlocks)
+route.use("/update-block/:id",checkAuthForAdmin)
+route.put("/update-block/:id",updateBlocks)
 
 export default route
